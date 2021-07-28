@@ -1,24 +1,39 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;
 
-export const Menu = styled.div``;
+export const Menu = styled.div`
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--darkColor);
+  border-top: 2px solid var(--darkColor);
+  padding: 0 1rem;
+  padding-top: 0.5rem;
+`;
 
 export const Posts = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  margin: 0 auto;
+  padding: 0;
 `;
 
 export const Post = styled.div`
-  flex: 0 0 27%;
+  display: flex;
   padding-bottom: 0.5rem;
-  align-self: center;
+  justify-content: center;
+  padding: 1rem 0rem;
+  flex: 0 0 33.333333%;
+
   img {
+    cursor: pointer;
     width: 202px;
+    :hover {
+      opacity: 70%;
+    }
   }
 `;

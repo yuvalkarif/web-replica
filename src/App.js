@@ -1,13 +1,18 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 //Components
 import Profile from "./Components/Profile";
+import Post from "./Components/Post";
 //Root CSS
 import "./App.css";
 function App() {
   return (
-    <div className="App">
-      <Profile></Profile>
-    </div>
+    <Router>
+      <div className="App">
+        {/* <Profile></Profile> */}
+        <Post></Post>
+      </div>
+    </Router>
   );
 }
 
