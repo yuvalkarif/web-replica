@@ -3,6 +3,10 @@
   --bgColor: #fafafa;
   --darkColor: #262626;
   --lightColor: #dbdbdb;
+  --mediumColor: #696969;
   font-family: "Roboto", sans-serif;
   background-color: var(--bgColor);
+}
+body {
+  margin: 0;
 }
