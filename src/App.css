@@ -4,6 +4,7 @@
   --darkColor: #262626;
   --lightColor: #dbdbdb;
   --mediumColor: #696969;
+  --blueColor: #1da1f2;
   font-family: "Roboto", sans-serif;
   background-color: var(--bgColor);
 }
