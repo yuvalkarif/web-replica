@@ -54,12 +54,14 @@ const LoginPage = () => {
             type="text"
             placeholder="Email address"
             onChange={({ target }) => setEmailAddress(target.value.toString())}
+            value={emailAddress}
           />
           <input
             aria-label="Enter your password"
             type="password"
             placeholder="Password"
             onChange={({ target }) => setPassword(target.value)}
+            value={password}
           />
           <SubmitButton disabled={isInvalid} type="submit">
             Log In
@@ -68,7 +70,8 @@ const LoginPage = () => {
       </Wrapper>
 
       <Bottom>
-        <div>Don't have an account?</div> <Link to="/signup">Sign Up</Link>
+        <div>Don't have an account?</div>{" "}
+        <Link to={ROUTES.SIGNUP}>Sign Up</Link>
       </Bottom>
     </>
   );

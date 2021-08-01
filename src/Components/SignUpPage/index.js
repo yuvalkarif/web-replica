@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom";
 import FirebaseContext from "../../Context/firebase";
 import * as ROUTES from "../../constants/routes";
 import { Link } from "react-router-dom";
+import { doesUserNameExist } from "../../services/firebase";
 
 const SignUpPage = () => {
   const history = useHistory();
@@ -30,11 +31,36 @@ const SignUpPage = () => {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    try {
-      await firebase;
-
-      history.push(ROUTES.DASHBOARD);
-    } catch (error) {}
+    const usernameExists = await doesUserNameExist(userName);
+    if (!usernameExists.length) {
+      try {
+        const createdUserResult = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(emailAddress, password);
+        //auth
+        await createdUserResult.user.updateProfile({ displayName: userName });
+        //firebase user collection
+        await firebase
+          .firestore()
+          .collection("users")
+          .add({
+            userId: createdUserResult.user.uid,
+            username: userName.toLocaleLowerCase(),
+            fullName,
+            emailAddress: emailAddress.toLocaleLowerCase,
+            following: ["bmxcUk2TvAYrbmvPisqMr8stjFG2"],
+            dateCreated: Date.now(),
+          });
+        history.push(ROUTES.DASHBOARD);
+      } catch (error) {
+        setFullName("");
+        setPassword("");
+        setEmailAddress("");
+        setUserName("");
+      }
+    } else {
+      setError("Username is already taken, please try another.");
+    }
   };
 
   useEffect(() => {
@@ -45,31 +71,34 @@ const SignUpPage = () => {
       <Wrapper>
         <LogoImg src={Logo}></LogoImg>
         {error && <ErrorMessage>{error}</ErrorMessage>}
-        <LoginForm onSubmit={"handleLogin"} method="POST">
+        <LoginForm onSubmit={handleSignUp} method="POST">
           <input
             aria-label="Enter full name"
             type="text"
             placeholder="Full Name"
             onChange={({ target }) => setFullName(target.value.toString())}
-            value={fullname}
+            value={fullName}
           />
           <input
             aria-label="Enter Username"
             type="text"
             placeholder="Username"
             onChange={({ target }) => setUserName(target.value.toString())}
+            value={userName}
           />
           <input
             aria-label="Enter your email address"
             type="text"
             placeholder="Email address"
             onChange={({ target }) => setEmailAddress(target.value.toString())}
+            value={emailAddress}
           />
           <input
             aria-label="Enter your password"
             type="password"
             placeholder="Password"
             onChange={({ target }) => setPassword(target.value)}
+            value={password}
           />
           <SubmitButton disabled={isInvalid} type="submit">
             Sign Up
@@ -78,7 +107,7 @@ const SignUpPage = () => {
       </Wrapper>
 
       <Bottom>
-        <div>Have an Account?</div> <Link to="/login">Log In</Link>
+        <div>Have an Account?</div> <Link to={ROUTES.LOGIN}>Log In</Link>
       </Bottom>
     </>
   );
