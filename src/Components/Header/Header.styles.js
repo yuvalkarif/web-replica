@@ -46,3 +46,15 @@ export const Navbar = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
+
+export const Button = styled.button`
+  background-color: var(--blueColor);
+  color: var(--bgColor);
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+`;

@@ -45,12 +45,13 @@ const SignUpPage = () => {
           .collection("users")
           .add({
             userId: createdUserResult.user.uid,
-            username: userName.toLocaleLowerCase(),
+            username: userName.toLowerCase(),
             fullName,
-            emailAddress: emailAddress.toLocaleLowerCase,
+            emailAddress: emailAddress.toLowerCase(),
             following: ["bmxcUk2TvAYrbmvPisqMr8stjFG2"],
             dateCreated: Date.now(),
           });
+        console.log(firebase);
         history.push(ROUTES.DASHBOARD);
       } catch (error) {
         setFullName("");
