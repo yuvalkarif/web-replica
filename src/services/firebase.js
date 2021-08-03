@@ -22,3 +22,16 @@ export async function getUserByUserId(userId) {
   }));
   return user;
 }
+
+export async function getSuggestions(userId, following) {
+  const results = await firebase
+    .firestore()
+    .collection("users")
+    .where("userId", "!=", userId)
+    .limit(10)
+    .get();
+
+  return results.docs
+    .map((user) => ({ ...user.data(), docId: user.id }))
+    .filter((profile) => profile.userId && !following.includes(profile.userId));
+}

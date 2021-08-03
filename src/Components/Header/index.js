@@ -50,18 +50,7 @@ export const Header = () => {
         ) : (
           <>
             <Link to={ROUTES.LOGIN}>
-              <Button
-                onClick={() => {
-                  firebase.auth().signOut();
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    firebase.auth().signOut();
-                  }
-                }}
-              >
-                Login
-              </Button>
+              <Button>Login</Button>
               <Link to={ROUTES.SIGNUP}>
                 <Button
                   onClick={() => {
