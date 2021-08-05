@@ -1,9 +1,8 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import {
-  Fullname,
   MiniProfile,
   Wrapper,
   Username,
@@ -11,12 +10,30 @@ import {
   Follow,
 } from "./SuggestedProfile.styles";
 import ProfilePic from "./../Template/Photos/profile-pic.jpg";
+import {
+  updateLoggedInUserFollowing,
+  updateFollowedUserFollowers,
+} from "../../services/firebase";
 
-const User = ({ username, fullName, docId, userId }) => {
+const User = ({
+  profileDocId,
+  username,
+  profileId,
+  loggedInUserDocId,
+  userId,
+}) => {
   const [followed, setFollowed] = useState(false);
+
+  async function handleFollowUser() {
+    setFollowed(true);
+    await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
+    await updateFollowedUserFollowers(profileDocId, userId, false);
+    console.log(`handledfollowers`);
+  }
+
   return !followed ? (
     <Wrapper>
-      {!username || !fullName ? (
+      {!username ? (
         <Skeleton count={1} height={61}></Skeleton>
       ) : (
         <>
@@ -27,14 +44,13 @@ const User = ({ username, fullName, docId, userId }) => {
 
             <Username>{username}</Username>
 
-            <Follow>Follow</Follow>
+            <Follow onClick={handleFollowUser}>Follow</Follow>
           </MiniProfile>
         </>
       )}
     </Wrapper>
   ) : null;
 };
-
 export default memo(User);
 
 User.propTypes = {

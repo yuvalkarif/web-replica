@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     color: inherit;
     font: inherit;
     font-size: 0.75rem;
+    width: 40px;
   }
 `;
 export const Grid = styled.div`
@@ -19,7 +20,7 @@ export const Grid = styled.div`
 export const MiniProfile = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-columns: 75% 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -32,9 +33,9 @@ export const MiniProfile = styled.div`
 `;
 
 export const MiniPic = styled.img`
-  width: 50px;
+  width: 40px;
   border-radius: 100%;
-  margin: auto;
+  margin-block: auto;
 `;
 
 export const Username = styled.div`

@@ -8,8 +8,9 @@ import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import { getSuggestions } from "../../services/firebase";
 import SuggestedProfile from "../SuggestedProfile";
+import { Title, Wrapper } from "./Suggestions.styles";
 
-const Suggestions = ({ userId, following }) => {
+const Suggestions = ({ userId, following, loggedInUserDocId }) => {
   const [profiles, setProfiles] = useState(null);
   // const { firebase } = useContext(FirebaseContext);
 
@@ -24,31 +25,34 @@ const Suggestions = ({ userId, following }) => {
     if (userId) {
       setSuggestions();
     }
-  }, [userId]);
+  }, [userId, following]);
 
   return !profiles ? (
     <Skeleton count={10} height={150} />
   ) : profiles.length > 0 ? (
-    <div>
+    <Wrapper>
+      <Title>Suggestions for you</Title>
       {profiles.map((profile) => {
         return (
           <SuggestedProfile
             username={profile.username}
             fullName={profile.fullName}
             key={profile.docId}
-            docId={profile.docId}
+            profileDocId={profile.docId}
+            profileId={profile.userId}
             userId={userId}
+            loggedInUserDocId={loggedInUserDocId}
           ></SuggestedProfile>
         );
       })}
-    </div>
+    </Wrapper>
   ) : null;
 };
 
 export default Suggestions;
 
 Suggestions.propTypes = {
-  userId: PropTypes.string,
+  loggedInUserId: PropTypes.string,
   username: PropTypes.string,
   docId: PropTypes.string,
   profileId: PropTypes.string,

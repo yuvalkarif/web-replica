@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-top: 0.3rem;
   a {
-    text-decoration: none;
-    color: inherit;
-    font: inherit;
-    font-size: 0.75rem;
+    width: 30px;
+    margin-block: auto;
   }
 `;
 export const Grid = styled.div`
@@ -32,20 +31,20 @@ export const MiniProfile = styled.div`
 `;
 
 export const MiniPic = styled.img`
-  width: 35px;
+  width: 30px;
   border-radius: 100%;
   margin: auto;
 `;
 
 export const Username = styled.div`
-  margin-top: auto;
-  margin-bottom: 0;
+  margin-block: auto;
+
   font-weight: 500;
   font-size: 0.5rem;
 `;
 export const Fullname = styled.div`
-  margin-top: 0;
-  margin-bottom: auto;
+  margin-block: auto;
+
   font-size: 0.5rem;
   width: 100%;
 `;
@@ -55,4 +54,8 @@ export const Follow = styled.button`
   border: none;
   padding: 0;
   font-size: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--blueColor);
+  text-align: end;
 `;
