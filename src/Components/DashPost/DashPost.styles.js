@@ -23,6 +23,8 @@ export const PostPic = styled.img`
 export const HeaderTitle = styled.div`
   margin-block: auto;
   margin-left: 0.5rem;
+  font-weight: 500;
+  font-size: 0.725rem;
 `;
 
 export const PostWrapper = styled.div`
@@ -30,7 +32,7 @@ export const PostWrapper = styled.div`
   margin-bottom: 3rem;
 `;
 export const ActionWrapper = styled.div`
-  padding: 0.5rem;
+  padding: 0.6rem;
 `;
 
 export const Heart = styled.svg`
@@ -38,11 +40,96 @@ export const Heart = styled.svg`
   user-select: none;
   cursor: pointer;
   fill: ${(props) => (props.toggleLiked ? "red" : "none")};
-  stroke: ${(props) => (props.toggleLiked ? "red" : "black")};
+  stroke: ${(props) => (props.toggleLiked ? "red" : "var(--darkColor);")};
   margin-right: 0.5rem;
 `;
 export const Comment = styled.svg`
   width: 2rem;
   user-select: none;
   cursor: pointer;
+  stroke: var(--darkColor);
+`;
+
+export const Likes = styled.div`
+  font-size: 0.8rem;
+  padding-left: 0.2rem;
+  font-weight: 500;
+  color: var(--darkColor);
+`;
+
+export const FooterWrapper = styled.div`
+  font-size: 0.8rem;
+  padding-left: 0.8rem;
+  font-weight: 400;
+  color: var(--darkColor);
+  span:first-child {
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+`;
+
+export const CommentsTitle = styled.div`
+  color: var(--mediumColor);
+  font-size: 0.8rem;
+  padding-left: 0.8rem;
+  margin-top: 0.35rem;
+  cursor: pointer;
+`;
+export const CommentsName = styled.div`
+  display: flex;
+  margin-top: 0.35rem;
+  a {
+    font-weight: 500;
+
+    text-decoration: none;
+    color: var(--darkColor);
+    font-size: 0.8rem;
+    padding-left: 0.8rem;
+
+    cursor: pointer;
+  }
+`;
+
+export const CommentsText = styled.div`
+  font-size: 0.8rem;
+  padding-left: 0.35rem;
+  font-weight: 400;
+  color: var(--darkColor);
+`;
+
+export const PostDate = styled.div`
+  font-size: 0.65rem;
+  padding-left: 0.8rem;
+  font-weight: 400;
+  color: var(--mediumColor);
+  margin-block: 0.5rem;
+`;
+
+export const AddCommentBox = styled.div`
+  border-top: 1px solid var(--lightColor);
+  background-color: white;
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+
+    input {
+      border: none;
+      padding: 1.1rem 1rem;
+      width: 100%;
+      color: var(--darkColor);
+      outline: none;
+    }
+  }
+`;
+
+export const CommentButton = styled.button`
+  border: none;
+  background: white;
+  font-weight: 600;
+  color: var(--blueColor);
+  padding-inline: 1rem;
+  cursor: pointer;
+  opacity: ${(props) => (props.comment ? "1" : "0.25")}; ;
 `;

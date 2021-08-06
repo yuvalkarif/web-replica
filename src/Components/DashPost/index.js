@@ -4,10 +4,12 @@ import DashPostHeader from "./header";
 import { PostWrapper } from "./DashPost.styles";
 import DashPostImage from "./image";
 import DashPostActions from "./actions";
+import DashPostFooter from "./footer";
+import DashPostComments from "./comments";
 
 const DashPost = ({ content }) => {
   const commentInput = useRef(null);
-  const handleFocus = () => commentInput.current.handleFocus;
+  const handleFocus = () => commentInput.current.focus();
   return (
     <PostWrapper>
       <DashPostHeader username={content.username} />
@@ -17,6 +19,13 @@ const DashPost = ({ content }) => {
         totalLikes={content.likes.length}
         likedPhoto={content.userLikedPhoto}
         handleFocus={handleFocus}
+      />
+      <DashPostFooter caption={content.caption} username={content.username} />
+      <DashPostComments
+        docId={content.docId}
+        comments={content.comments}
+        posted={content.dateCreated}
+        commentInput={commentInput}
       />
     </PostWrapper>
   );
@@ -31,7 +40,7 @@ DashPost.propTypes = {
     userLikedPhoto: PropTypes.bool.isRequired,
     likes: PropTypes.array.isRequired,
     comments: PropTypes.array.isRequired,
-    updateCreated: PropTypes.number.isRequired,
+    dateCreated: PropTypes.number.isRequired,
   }),
 };
 
