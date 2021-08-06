@@ -21,7 +21,7 @@ export default function AddComment({
     event.preventDefault();
 
     setComments([{ displayName, comment }, ...comments]);
-    // setComment(``);
+    setComment(``);
 
     return firebase
       .firestore()
