@@ -3,8 +3,6 @@ import { lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Components
 import Header from "./Components/Header";
-import Profile from "./Components/Profile";
-import Post from "./Components/Post";
 //Data
 import { initialProfile as profile } from "./Components/Template/profileTemplate";
 //Root CSS
@@ -21,6 +19,7 @@ const Login = lazy(() => import("./Components/LoginPage"));
 const SignUp = lazy(() => import("./Components/SignUpPage"));
 const NotFound = lazy(() => import("./Components/NotFoundPage"));
 const Dashboard = lazy(() => import("./Components/DashboardPage"));
+const Profile = lazy(() => import("./Components/ProfilePage"));
 
 function App() {
   const { user } = useAuthListener();
@@ -47,10 +46,10 @@ function App() {
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
-            <Route path={ROUTES.PROFILE} component={Profile} />
+            <Route component={Profile} path={ROUTES.PROFILE} />
+
             <Route component={NotFound} />
-            <Post></Post>
-            <Profile></Profile>
+
             <Header profile={profile} profilePic={profile.profilePic}></Header>
           </Switch>
         </Suspense>

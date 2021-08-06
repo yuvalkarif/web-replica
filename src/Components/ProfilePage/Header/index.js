@@ -1,20 +1,27 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 import { Wrapper, Info, Title, Details, Description } from "./Header.styles";
-const Header = ({ userProfile }) => {
+const Header = ({ userProfile, user, photos }) => {
   return (
     <Wrapper id={"Header"}>
       <img src={userProfile.profilePic} alt="profile pic" />
       <Info>
-        <Title>{userProfile.name}</Title>
+        <Title>{user ? `${user.username}` : <Skeleton />}</Title>
         <Details>
           <div>
-            <span>{userProfile.posts.length}</span> posts
+            <span>{photos ? `${photos}` : <Skeleton width={10} />}</span> posts
           </div>
           <div>
-            <span>{userProfile.followers.length}</span> followers
+            <span>
+              {user ? `${user.followers.length}` : <Skeleton width={10} />}
+            </span>{" "}
+            followers
           </div>
           <div>
-            <span>{userProfile.following.length}</span> following
+            <span>
+              {user ? `${user.following.length}` : <Skeleton width={10} />}
+            </span>{" "}
+            following
           </div>
         </Details>
         <Description>
