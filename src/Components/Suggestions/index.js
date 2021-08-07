@@ -42,6 +42,7 @@ const Suggestions = ({ userId, following, loggedInUserDocId }) => {
             profileId={profile.userId}
             userId={userId}
             loggedInUserDocId={loggedInUserDocId}
+            profilePic={profile.profilePic}
           ></SuggestedProfile>
         );
       })}

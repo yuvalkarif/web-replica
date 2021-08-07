@@ -21,6 +21,7 @@ const User = ({
   profileId,
   loggedInUserDocId,
   userId,
+  profilePic,
 }) => {
   const [followed, setFollowed] = useState(false);
 
@@ -39,7 +40,11 @@ const User = ({
         <>
           <MiniProfile>
             <Link to={`/p/${username}`}>
-              <MiniPic className="img" src={ProfilePic} />
+              {profilePic ? (
+                <MiniPic className="img" src={profilePic} />
+              ) : (
+                <Skeleton height={30} width={30} circle={true} />
+              )}
             </Link>
 
             <Username>{username}</Username>

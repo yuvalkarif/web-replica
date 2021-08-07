@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Search,
   Wrapper,
@@ -13,10 +13,24 @@ import FirebaseContext from "../../Context/firebase";
 import UserContext from "../../Context/user";
 import * as ROUTES from "../../constants/routes";
 import ProfilePic from "./../Template/Photos/profile-pic.jpg";
+import { getUserByUserId } from "../../services/firebase";
+import { useEffect } from "react/cjs/react.development";
+import Skeleton from "react-loading-skeleton";
 export const Header = () => {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
-  console.log({ user });
+  const [profilePic, setProfilePic] = useState();
+
+  useEffect(() => {
+    async function getUserPic() {
+      const result = await getUserByUserId(user.uid);
+      console.log(result[0]);
+      setProfilePic(result[0].profilePic);
+    }
+    if (user?.uid) {
+      getUserPic();
+    }
+  }, [user]);
 
   return (
     <Wrapper>
@@ -44,7 +58,11 @@ export const Header = () => {
               </Button>
             </Link>
             <Link to={`/p/${user.displayName}`}>
-              <MiniPic src={ProfilePic}></MiniPic>
+              {profilePic ? (
+                <MiniPic src={profilePic}></MiniPic>
+              ) : (
+                <Skeleton height={36} width={36} circle={true} />
+              )}
             </Link>
           </>
         ) : (

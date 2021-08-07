@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   margin-left: 2rem;
   border-bottom: 1.5px solid var(--lightColor);
-  padding: 2rem 3rem;
+  padding: 3rem 4rem;
   img {
     width: 148px;
     height: 148px;

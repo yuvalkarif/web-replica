@@ -70,3 +70,20 @@ export function seedDatabase(firebase) {
       });
   }
 }
+
+export function updateDatabase(firebase) {
+  firebase
+    .firestore()
+    .collection("users")
+    .add({
+      userId: "5",
+      username: "royi_ashtar",
+      fullName: "Royi Ashtar",
+      emailAddress: "royiashtar@gmail.com",
+      following: ["2"],
+      followers: ["2", "3", "4"],
+      dateCreated: Date.now(),
+      profilePic: "https://i.imgur.com/lnTqvX7.png",
+      description: ["20yo,grinding in the idf  💪🌊 ,herzliya kipuah "],
+    });
+}

@@ -27,11 +27,12 @@ export const Post = styled.div`
   padding-bottom: 0.5rem;
   justify-content: center;
   padding: 1rem 0rem;
+  margin-inline: 1rem;
   flex: 0 0 33.333333%;
 
   img {
     cursor: pointer;
-    width: 202px;
+    width: 256px;
     :hover {
       opacity: 70%;
     }
