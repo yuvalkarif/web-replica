@@ -18,6 +18,9 @@ const ProfilePage = () => {
   const [first, setFirst] = useState(true);
   const { username } = useParams();
   const { photos, user } = usePosts(username);
+  if (user && photos) {
+    console.log(user, photos);
+  }
   // useEffect(() => {
   //   async function getUser() {
   //     const result = await getUserByUsername(username);

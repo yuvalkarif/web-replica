@@ -4,12 +4,12 @@ export const Wrapper = styled.div`
   flex-direction: row;
   margin-left: 2rem;
   border-bottom: 1.5px solid var(--lightColor);
+  padding: 2rem 3rem;
   img {
     width: 148px;
-    height: auto;
+    height: 148px;
     border-radius: 100%;
     aspect-ratio: 1/1;
-    padding: 2rem 3rem;
   }
 `;
 export const Info = styled.div`
@@ -17,7 +17,7 @@ export const Info = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
-  margin: 1.5rem 0;
+
   margin-left: 2rem;
 `;
 

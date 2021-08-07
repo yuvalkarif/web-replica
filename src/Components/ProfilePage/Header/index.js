@@ -4,12 +4,28 @@ import { Wrapper, Info, Title, Details, Description } from "./Header.styles";
 const Header = ({ userProfile, user, photos }) => {
   return (
     <Wrapper id={"Header"}>
-      <img src={userProfile.profilePic} alt="profile pic" />
+      {user?.profilePic ? (
+        <img src={user.profilePic} alt="profile pic" />
+      ) : (
+        <Skeleton />
+      )}
       <Info>
-        <Title>{user ? `${user.username}` : <Skeleton />}</Title>
+        <Title>
+          {user ? (
+            `${user.username}`
+          ) : (
+            <Skeleton
+              width={148}
+              height={148}
+              circle={true}
+              style={{ margin: "2rem 3rem" }}
+            />
+          )}
+        </Title>
         <Details>
           <div>
-            <span>{photos ? `${photos}` : <Skeleton width={10} />}</span> posts
+            <span>{photos ? `${photos.length}` : <Skeleton width={10} />}</span>{" "}
+            posts
           </div>
           <div>
             <span>
@@ -25,9 +41,13 @@ const Header = ({ userProfile, user, photos }) => {
           </div>
         </Details>
         <Description>
-          {userProfile.description.map((text, i) => {
-            return i === 0 ? <h1 key={i}>{text}</h1> : <p key={i}>{text}</p>;
-          })}
+          {user?.description ? (
+            user.description.map((text, i) => {
+              return i === 0 ? <h1 key={i}>{text}</h1> : <p key={i}>{text}</p>;
+            })
+          ) : (
+            <Skeleton />
+          )}
         </Description>
       </Info>
     </Wrapper>
