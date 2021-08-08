@@ -6,14 +6,18 @@ import DashPostImage from "./image";
 import DashPostActions from "./actions";
 import DashPostFooter from "./footer";
 import DashPostComments from "./comments";
+import { Link } from "react-router-dom";
 
 const DashPost = ({ content }) => {
+  console.log(content);
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
   return (
     <PostWrapper>
       <DashPostHeader username={content.username} />
-      <DashPostImage src={content.imageSrc} caption={content.caption} />
+      <Link to={`/post/${content.photoId}`}>
+        <DashPostImage src={content.imageSrc} caption={content.caption} />
+      </Link>
       <DashPostActions
         docId={content.docId}
         totalLikes={content.likes.length}

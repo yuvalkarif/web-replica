@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { post1 as post } from "../Template/postTemplates";
-import { initialProfile as profile } from "../Template/profileTemplate";
+
 import { useParams } from "react-router";
 import {
   Wrapper,
@@ -11,28 +11,45 @@ import {
   Utility,
   Comment,
   Buttons,
-  Date,
   Block,
   CommentsWrapper,
+  SkeletonWrapper,
+  DateWrapper,
 } from "./Post.styles";
 import Header from "../Header";
 import {
   getPhotoByPhotoId,
   getPhotos,
+  getProfilePictureByName,
   getUserByUserId,
   getUserByUsername,
 } from "../../services/firebase";
 import Skeleton from "react-loading-skeleton";
+import { Link } from "react-router-dom";
+import DashPostActions from "../DashPost/actions";
+import { formatDistance } from "date-fns";
+import AddComment from "../DashPost/add-comment";
 const Post = () => {
   const { photoId } = useParams();
   const [photo, setPhoto] = useState(null);
   const [user, setUser] = useState(null);
+  const [commentPhotos, setCommentPhotos] = useState([]);
+  const commentInput = useRef(null);
+  const handleFocus = () => commentInput.current.focus();
+
   useEffect(() => {
     async function getPhotoPost() {
-      const photoResult = await getPhotoByPhotoId(photoId);
+      const [photoResult] = await getPhotoByPhotoId(photoId);
       setPhoto(photoResult);
+
       const [userResult] = await getUserByUserId(photoResult.userId);
       setUser(userResult);
+      const commentPhotosArray = await Promise.all(
+        photoResult.comments.map(async (comment) => {
+          return await getProfilePictureByName(comment.displayName);
+        })
+      );
+      setCommentPhotos(commentPhotosArray);
     }
     if (photoId) getPhotoPost();
   }, [photoId]);
@@ -49,7 +66,9 @@ const Post = () => {
         <Content>
           <PostHeader>
             {user ? (
-              <MiniPic src={user.profilePic} alt="" />
+              <Link to={`/p/${user.username}`}>
+                <MiniPic src={user.profilePic} alt="" />
+              </Link>
             ) : (
               <Skeleton width={44} height={44} circle={true} />
             )}
@@ -59,31 +78,51 @@ const Post = () => {
           </PostHeader>
           <Description>
             <Block>
-              {photo ? (
-                photo.comments.map((comment) => {
-                  console.log(comment.displayName);
+              {photo && user ? (
+                photo.comments.map((comment, i) => {
                   return (
                     <CommentsWrapper>
-                      <MiniPic src={profile.profilePic} alt="" />
-                      <h1>{comment.displayName}</h1>
+                      <Link to={`/p/${comment.displayName}`}>
+                        {commentPhotos ? (
+                          <MiniPic src={commentPhotos[i]} alt=""></MiniPic>
+                        ) : (
+                          <Skeleton width={44} height={44} />
+                        )}
+                        <h1>{comment.displayName}</h1>
+                      </Link>
                       <div>{comment.comment}</div>
                     </CommentsWrapper>
                   );
                 })
               ) : (
-                <Skeleton />
+                <SkeletonWrapper>
+                  <Skeleton width={410} height={44} count={5} />
+                </SkeletonWrapper>
               )}
             </Block>
           </Description>
-          <Utility>
-            <Buttons>
-              <div>LIKE</div>
-              <div>COMMENT</div>
-              <div>SAVE</div>
-            </Buttons>
-            <Date>{post.date}</Date>
-          </Utility>
-          <Comment>Add a comment...</Comment>
+
+          {photo ? (
+            <DashPostActions
+              totalLikes={photo.likes.length}
+              docId={photo.docId}
+              posted={photo.dateCreated}
+            />
+          ) : null}
+          {photo ? (
+            <DateWrapper>
+              {formatDistance(photo.dateCreated, new Date()).toUpperCase()}
+            </DateWrapper>
+          ) : (
+            <Skeleton />
+          )}
+          {photo ? (
+            <AddComment
+              docId={photo.docId}
+              comments={photo.comments}
+              commentInput={commentInput}
+            />
+          ) : null}
         </Content>
       </Wrapper>
     </>

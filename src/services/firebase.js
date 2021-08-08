@@ -120,7 +120,10 @@ export async function getPhotoByPhotoId(photoId) {
     .where("photoId", "==", photoId)
     .get();
 
-  return result.docs.map((photo) => photo.data())[0];
+  return result.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id,
+  }));
 }
 
 export async function getProfilePictureByName(displayName) {

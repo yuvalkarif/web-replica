@@ -36,6 +36,9 @@ export const Header = styled.div`
 
 export const MiniPic = styled.img`
   width: 44px;
+  height: 44px;
+
+  overflow: hidden;
   border-radius: 100%;
 `;
 
@@ -72,8 +75,12 @@ export const Buttons = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const Date = styled.div`
+export const DateWrapper = styled.div`
   color: var(--mediumColor);
+  margin-left: 0.75rem;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
 `;
 export const Comment = styled.div`
   padding: 1rem;
@@ -83,4 +90,14 @@ export const Comment = styled.div`
 export const CommentsWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  a {
+    text-decoration: none;
+    display: flex;
+    color: inherit;
+  }
+`;
+export const SkeletonWrapper = styled.div`
+  span {
+    margin-block: 0.5rem;
+  }
 `;
