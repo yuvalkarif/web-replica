@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
@@ -9,7 +9,7 @@ import {
   MiniPic,
   Follow,
 } from "./SuggestedProfile.styles";
-import ProfilePic from "./../Template/Photos/profile-pic.jpg";
+
 import {
   updateLoggedInUserFollowing,
   updateFollowedUserFollowers,

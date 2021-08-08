@@ -1,9 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import FirebaseContext from "../../Context/firebase";
+import React, { useEffect, useState } from "react";
 
-import { FieldValue } from "../../Lib/firebase";
-import { getUserByUserId } from "../../services/firebase";
-import { firebase } from "../../Lib/firebase";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import { getSuggestions } from "../../services/firebase";
@@ -12,10 +8,6 @@ import { Title, Wrapper } from "./Suggestions.styles";
 
 const Suggestions = ({ userId, following, loggedInUserDocId }) => {
   const [profiles, setProfiles] = useState(null);
-  // const { firebase } = useContext(FirebaseContext);
-
-  // const dontSuggest = [...user.following, user.userId];
-  // console.log({ dontSuggest });
 
   useEffect(() => {
     async function setSuggestions() {

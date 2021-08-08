@@ -24,14 +24,12 @@ export default function DashPostComments({
           <CommentsTitle>View all {comments.length} comments</CommentsTitle>
         )}
         {comments.slice(0, 3).map((item) => (
-          <div>
-            <CommentsName key={`${item.comment}-${item.displayName}`}>
-              <Link to={`/p/${item.displayName}`}>
-                <span>{item.displayName}</span>
-              </Link>
-              <CommentsText>{item.comment}</CommentsText>
-            </CommentsName>
-          </div>
+          <CommentsName key={`${item.comment}-${item.displayName}`}>
+            <Link to={`/p/${item.displayName}`}>
+              <span>{item.displayName}</span>
+            </Link>
+            <CommentsText>{item.comment}</CommentsText>
+          </CommentsName>
         ))}
         <PostDate>
           {formatDistance(posted, new Date()).toUpperCase()} AGO

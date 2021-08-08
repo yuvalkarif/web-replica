@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ActionWrapper, FooterWrapper } from "./DashPost.styles";
+import { FooterWrapper } from "./DashPost.styles";
 export default function DashPostFooter({ caption, username }) {
   return (
     <FooterWrapper>

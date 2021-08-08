@@ -29,10 +29,17 @@ export const Post = styled.div`
   padding: 1rem 0rem;
   margin-inline: 1rem;
   flex: 0 0 33.333333%;
+  position: relative;
+  /* ::before {
+    content: "x";
+    position: absolute;
+    bottom: 50%;
+  } */
 
   img {
     cursor: pointer;
     width: 256px;
+
     :hover {
       opacity: 70%;
     }

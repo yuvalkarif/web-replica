@@ -7,6 +7,7 @@ import {
   Details,
   Description,
 } from "./ProfileHeader.styles";
+import PropTypes from "prop-types";
 const ProfileHeader = ({ user, photos }) => {
   return (
     <Wrapper id={"Header"}>
@@ -57,3 +58,8 @@ const ProfileHeader = ({ user, photos }) => {
 };
 
 export default ProfileHeader;
+
+ProfileHeader.propTypes = {
+  user: PropTypes.object,
+  photos: PropTypes.array,
+};

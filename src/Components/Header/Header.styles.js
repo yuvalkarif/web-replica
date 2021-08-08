@@ -13,6 +13,9 @@ export const Wrapper = styled.div`
   border-bottom: 1.5px solid var(--lightColor);
 
   align-items: center;
+  a {
+    display: flex;
+  }
 `;
 export const MiniLogo = styled.img`
   height: 2rem;

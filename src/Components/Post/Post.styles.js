@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   width: 1080px;
   border: 1.5px solid var(--lightColor);
-  padding: 1px;
+  background-color: white;
+  margin-top: 2rem;
 `;
 
 export const Content = styled.div`
@@ -19,6 +20,7 @@ export const Block = styled.div`
   display: flex;
   text-align: center;
   padding: 1rem;
+  flex-direction: column;
 `;
 export const Header = styled.div`
   display: flex;
@@ -76,4 +78,9 @@ export const Date = styled.div`
 export const Comment = styled.div`
   padding: 1rem;
   color: var(--mediumColor);
+`;
+
+export const CommentsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
 `;

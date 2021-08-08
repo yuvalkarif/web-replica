@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import FirebaseContext from "../../Context/firebase";
 import UserContext from "../../Context/user";
 import * as ROUTES from "../../constants/routes";
-import ProfilePic from "./../Template/Photos/profile-pic.jpg";
 import { getUserByUserId } from "../../services/firebase";
 import { useEffect } from "react/cjs/react.development";
 import Skeleton from "react-loading-skeleton";
@@ -20,11 +19,12 @@ export const Header = () => {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
   const [profilePic, setProfilePic] = useState();
+  const [search, setSearch] = useState(``);
 
   useEffect(() => {
     async function getUserPic() {
       const result = await getUserByUserId(user.uid);
-      console.log(result[0]);
+
       setProfilePic(result[0].profilePic);
     }
     if (user?.uid) {
@@ -38,7 +38,11 @@ export const Header = () => {
         <MiniLogo src={Logo} alt="" />
       </Link>
       <Search>
-        <input value="Search"></input>
+        <input
+          placeholder="Search"
+          value={search}
+          onChange={({ target }) => setSearch(target.value)}
+        ></input>
       </Search>
       <Navbar>
         {user ? (

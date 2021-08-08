@@ -1,5 +1,6 @@
 import { Wrapper, Menu, Posts, Post } from "./Content.styles";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Skeleton from "react-loading-skeleton";
 
@@ -36,3 +37,7 @@ const Content = ({ photos }) => {
 };
 
 export default Content;
+
+Content.propTypes = {
+  photos: PropTypes.array,
+};

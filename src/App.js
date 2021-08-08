@@ -20,6 +20,7 @@ const SignUp = lazy(() => import("./Components/SignUpPage"));
 const NotFound = lazy(() => import("./Components/NotFoundPage"));
 const Dashboard = lazy(() => import("./Components/DashboardPage"));
 const Profile = lazy(() => import("./Components/ProfilePage"));
+const Post = lazy(() => import("./Components/Post"));
 
 function App() {
   const { user } = useAuthListener();
@@ -46,11 +47,15 @@ function App() {
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
-            <Route component={Profile} path={ROUTES.PROFILE} />
+
+            <ProtectedRoute user={user} path={ROUTES.PROFILE} exact>
+              <Profile />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.POST} exact>
+              <Post />
+            </ProtectedRoute>
 
             <Route component={NotFound} />
-
-            <Header profile={profile} profilePic={profile.profilePic}></Header>
           </Switch>
         </Suspense>
       </Router>
