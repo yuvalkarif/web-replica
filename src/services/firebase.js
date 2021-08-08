@@ -130,3 +130,15 @@ export async function getProfilePictureByName(displayName) {
   const [result] = await getUserByUsername(displayName);
   return result.profilePic;
 }
+
+export function getLikedPhoto(photo, userId) {
+  let userLikedPhoto = false;
+  if (photo.likes.includes(userId)) {
+    userLikedPhoto = true;
+  }
+  const newPhoto = { ...photo, userLikedPhoto: userLikedPhoto };
+
+  console.log(newPhoto);
+
+  return newPhoto;
+}

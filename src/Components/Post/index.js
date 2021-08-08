@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-import { post1 as post } from "../Template/postTemplates";
+import React, { useEffect, useState, useRef, useContext } from "react";
 
 import { useParams } from "react-router";
 import {
@@ -18,6 +17,7 @@ import {
 } from "./Post.styles";
 import Header from "../Header";
 import {
+  getLikedPhoto,
   getPhotoByPhotoId,
   getPhotos,
   getProfilePictureByName,
@@ -29,27 +29,33 @@ import { Link } from "react-router-dom";
 import DashPostActions from "../DashPost/actions";
 import { formatDistance } from "date-fns";
 import AddComment from "../DashPost/add-comment";
+import UserContext from "../../Context/user";
 const Post = () => {
   const { photoId } = useParams();
   const [photo, setPhoto] = useState(null);
-  const [user, setUser] = useState(null);
+  const [creator, setCreator] = useState(null);
   const [commentPhotos, setCommentPhotos] = useState([]);
+  const [postComments, setPostComments] = useState([]);
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     async function getPhotoPost() {
       const [photoResult] = await getPhotoByPhotoId(photoId);
-      setPhoto(photoResult);
+      setPostComments(photoResult.comments);
 
       const [userResult] = await getUserByUserId(photoResult.userId);
-      setUser(userResult);
+      setCreator(userResult);
+
       const commentPhotosArray = await Promise.all(
         photoResult.comments.map(async (comment) => {
           return await getProfilePictureByName(comment.displayName);
         })
       );
       setCommentPhotos(commentPhotosArray);
+      setPhoto(getLikedPhoto(photoResult, user.uid));
     }
     if (photoId) getPhotoPost();
   }, [photoId]);
@@ -65,21 +71,25 @@ const Post = () => {
         )}
         <Content>
           <PostHeader>
-            {user ? (
-              <Link to={`/p/${user.username}`}>
-                <MiniPic src={user.profilePic} alt="" />
+            {creator ? (
+              <Link to={`/p/${creator.username}`}>
+                <MiniPic src={creator.profilePic} alt="" />
               </Link>
             ) : (
               <Skeleton width={44} height={44} circle={true} />
             )}
             <h1>
-              {user ? user.username : <Skeleton width={150} height={17} />}
+              {creator ? (
+                creator.username
+              ) : (
+                <Skeleton width={150} height={17} />
+              )}
             </h1>
           </PostHeader>
           <Description>
             <Block>
-              {photo && user ? (
-                photo.comments.map((comment, i) => {
+              {photo && creator ? (
+                postComments.map((comment, i) => {
                   return (
                     <CommentsWrapper>
                       <Link to={`/p/${comment.displayName}`}>
@@ -106,12 +116,13 @@ const Post = () => {
             <DashPostActions
               totalLikes={photo.likes.length}
               docId={photo.docId}
-              posted={photo.dateCreated}
+              likedPhoto={photo.userLikedPhoto}
+              handleFocus={handleFocus}
             />
           ) : null}
           {photo ? (
             <DateWrapper>
-              {formatDistance(photo.dateCreated, new Date()).toUpperCase()}
+              {formatDistance(photo.dateCreated, new Date()).toUpperCase()} AGO
             </DateWrapper>
           ) : (
             <Skeleton />
@@ -119,8 +130,9 @@ const Post = () => {
           {photo ? (
             <AddComment
               docId={photo.docId}
-              comments={photo.comments}
+              comments={postComments}
               commentInput={commentInput}
+              setComments={setPostComments}
             />
           ) : null}
         </Content>
