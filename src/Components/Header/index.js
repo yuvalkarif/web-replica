@@ -47,7 +47,7 @@ export const Header = () => {
       <Navbar>
         {user ? (
           <>
-            <Link to={ROUTES.DASHBOARD}>
+            <Link to={ROUTES.DASHBOARD} style={{ textDecoration: "none" }}>
               <Button
                 onClick={() => {
                   firebase.auth().signOut();
@@ -73,20 +73,20 @@ export const Header = () => {
           <>
             <Link to={ROUTES.LOGIN}>
               <Button>Login</Button>
-              <Link to={ROUTES.SIGNUP}>
-                <Button
-                  onClick={() => {
+            </Link>
+            <Link to={ROUTES.SIGNUP}>
+              <Button
+                onClick={() => {
+                  firebase.auth().signOut();
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
                     firebase.auth().signOut();
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") {
-                      firebase.auth().signOut();
-                    }
-                  }}
-                >
-                  Sign Up
-                </Button>
-              </Link>
+                  }
+                }}
+              >
+                Sign Up
+              </Button>
             </Link>
           </>
         )}

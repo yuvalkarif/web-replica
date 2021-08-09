@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
 export const MiniLogo = styled.img`
   height: 2rem;
   margin-left: 1rem;
+  margin-top: 0.5rem;
 `;
 
 export const Search = styled.div`
@@ -60,4 +61,5 @@ export const Button = styled.button`
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   cursor: pointer;
+  text-decoration: none;
 `;

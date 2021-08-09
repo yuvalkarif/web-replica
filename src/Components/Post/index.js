@@ -7,22 +7,18 @@ import {
   Header as PostHeader,
   Description,
   MiniPic,
-  Utility,
-  Comment,
-  Buttons,
   Block,
   CommentsWrapper,
   SkeletonWrapper,
   DateWrapper,
+  TitleWrapper,
 } from "./Post.styles";
 import Header from "../Header";
 import {
   getLikedPhoto,
   getPhotoByPhotoId,
-  getPhotos,
   getProfilePictureByName,
   getUserByUserId,
-  getUserByUsername,
 } from "../../services/firebase";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
@@ -58,7 +54,7 @@ const Post = () => {
       setPhoto(getLikedPhoto(photoResult, user.uid));
     }
     if (photoId) getPhotoPost();
-  }, [photoId]);
+  }, [photoId, user.uid]);
 
   return (
     <>
@@ -79,8 +75,11 @@ const Post = () => {
               <Skeleton width={44} height={44} circle={true} />
             )}
             <h1>
-              {creator ? (
-                creator.username
+              {creator && photo ? (
+                <TitleWrapper>
+                  <span>{creator.username}</span>
+                  <div>{photo.caption}</div>
+                </TitleWrapper>
               ) : (
                 <Skeleton width={150} height={17} />
               )}
@@ -91,7 +90,7 @@ const Post = () => {
               {photo && creator ? (
                 postComments.map((comment, i) => {
                   return (
-                    <CommentsWrapper>
+                    <CommentsWrapper key={i}>
                       <Link to={`/p/${comment.displayName}`}>
                         {commentPhotos ? (
                           <MiniPic src={commentPhotos[i]} alt=""></MiniPic>

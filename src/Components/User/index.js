@@ -14,9 +14,11 @@ const User = ({ username, fullName }) => {
       ) : (
         <Link to={`/p/${username}`}>
           <MiniProfile>
-            <MiniPic className="img" src={ProfilePic} />
-            <Username>{username}</Username>
-            <Fullname>{fullName}</Fullname>
+            <MiniPic src={ProfilePic} />
+            <div>
+              <Username>{username}</Username>
+              <Fullname>{fullName}</Fullname>
+            </div>
           </MiniProfile>
         </Link>
       )}

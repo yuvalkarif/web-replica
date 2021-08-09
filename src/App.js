@@ -1,10 +1,7 @@
 import React, { Suspense } from "react";
 import { lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-//Components
-import Header from "./Components/Header";
-//Data
-import { initialProfile as profile } from "./Components/Template/profileTemplate";
+
 //Root CSS
 import "./App.css";
 //Consts
@@ -14,7 +11,7 @@ import UserContext from "./Context/user";
 
 import ProtectedRoute from "./helpers/protected.routes";
 import IsUserLoggedIn from "./helpers/is-user-logged-in";
-
+//Components
 const Login = lazy(() => import("./Components/LoginPage"));
 const SignUp = lazy(() => import("./Components/SignUpPage"));
 const NotFound = lazy(() => import("./Components/NotFoundPage"));

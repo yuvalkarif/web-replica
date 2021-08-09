@@ -39,14 +39,15 @@ const User = ({
         <>
           <MiniProfile>
             <Link to={`/p/${username}`}>
-              {profilePic ? (
-                <MiniPic className="img" src={profilePic} />
+              {profilePic && username ? (
+                <div>
+                  <MiniPic className="img" src={profilePic} />
+                  <Username>{username}</Username>
+                </div>
               ) : (
                 <Skeleton height={30} width={30} circle={true} />
               )}
             </Link>
-
-            <Username>{username}</Username>
 
             <Follow onClick={handleFollowUser}>Follow</Follow>
           </MiniProfile>

@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     width: 30px;
     margin-block: auto;
   }
+  width: 150px;
 `;
 export const Grid = styled.div`
   display: grid;
@@ -18,7 +19,7 @@ export const Grid = styled.div`
 export const MiniProfile = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -27,6 +28,13 @@ export const MiniProfile = styled.div`
 
   .img {
     grid-area: img;
+  }
+  a {
+    text-decoration: none;
+    color: var(--darkColor);
+    div {
+      display: flex;
+    }
   }
 `;
 
@@ -41,6 +49,7 @@ export const Username = styled.div`
 
   font-weight: 500;
   font-size: 0.5rem;
+  margin-left: 0.5rem;
 `;
 export const Fullname = styled.div`
   margin-block: auto;

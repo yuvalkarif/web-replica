@@ -18,17 +18,10 @@ export const Grid = styled.div`
 `;
 
 export const MiniProfile = styled.div`
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "img ."
-    "img .";
-
-  .img {
-    grid-area: img;
+  display: flex;
+  align-items: center;
+  div {
+    margin-left: 0.35rem;
   }
 `;
 

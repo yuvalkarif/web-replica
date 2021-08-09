@@ -90,14 +90,29 @@ export const Comment = styled.div`
 export const CommentsWrapper = styled.div`
   display: flex;
   flex-direction: row;
+
   a {
     text-decoration: none;
     display: flex;
     color: inherit;
   }
+  div {
+    color: var(--darkColor);
+  }
 `;
 export const SkeletonWrapper = styled.div`
   span {
     margin-block: 0.5rem;
+  }
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  div {
+    font-weight: 400;
+    margin-left: 0.5rem;
+    color: var(--darkColor);
   }
 `;

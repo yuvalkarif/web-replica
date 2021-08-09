@@ -138,8 +138,6 @@ export function getLikedPhoto(photo, userId) {
   }
   const newPhoto = { ...photo, userLikedPhoto: userLikedPhoto };
 
-  console.log(newPhoto);
-
   return newPhoto;
 }
 

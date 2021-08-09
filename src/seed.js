@@ -71,7 +71,7 @@ export function seedDatabase(firebase) {
   }
 }
 
-export function updateDatabase(firebase) {
+export function updateDatabaseUser(firebase) {
   firebase
     .firestore()
     .collection("users")
@@ -85,5 +85,26 @@ export function updateDatabase(firebase) {
       dateCreated: Date.now(),
       profilePic: "https://i.imgur.com/lnTqvX7.png",
       description: ["20yo,grinding in the idf  💪🌊 ,herzliya kipuah "],
+    });
+}
+export function updateDatabasePhoto(firebase) {
+  firebase
+    .firestore()
+    .collection("photos")
+    .add({
+      photoId: "4",
+      userId: "3",
+      imageSrc: `https://i.imgur.com/dQRMCg1.png`,
+      caption: "ad matai JS aug21",
+      likes: [],
+      comments: [
+        {
+          displayName: "tamar_kahanov",
+          comment: "shaboor",
+        },
+      ],
+      userLatitude: "40.7128°",
+      userLongitude: "74.0060°",
+      dateCreated: Date.now(),
     });
 }

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { MiniPic, HeaderTitle, HeaderWrapper } from "./DashPost.styles";
-import ProfilePic from "../Template/Photos/profile-pic.jpg";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { getProfilePictureByName } from "../../services/firebase";

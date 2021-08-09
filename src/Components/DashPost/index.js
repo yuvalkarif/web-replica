@@ -9,7 +9,6 @@ import DashPostComments from "./comments";
 import { Link } from "react-router-dom";
 
 const DashPost = ({ content }) => {
-  console.log(content);
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
   return (
