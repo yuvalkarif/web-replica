@@ -1,0 +1,40 @@
+{
+  "files": {
+    "static/js/0.da28ccef.chunk.js": "/web-replica/static/js/0.da28ccef.chunk.js",
+    "static/js/0.da28ccef.chunk.js.map": "/web-replica/static/js/0.da28ccef.chunk.js.map",
+    "static/js/1.d0caa015.chunk.js": "/web-replica/static/js/1.d0caa015.chunk.js",
+    "static/js/1.d0caa015.chunk.js.map": "/web-replica/static/js/1.d0caa015.chunk.js.map",
+    "static/js/2.5accee25.chunk.js": "/web-replica/static/js/2.5accee25.chunk.js",
+    "static/js/2.5accee25.chunk.js.map": "/web-replica/static/js/2.5accee25.chunk.js.map",
+    "main.css": "/web-replica/static/css/main.b6e2c020.chunk.css",
+    "main.js": "/web-replica/static/js/main.2dee1093.chunk.js",
+    "main.js.map": "/web-replica/static/js/main.2dee1093.chunk.js.map",
+    "runtime-main.js": "/web-replica/static/js/runtime-main.ade1633b.js",
+    "runtime-main.js.map": "/web-replica/static/js/runtime-main.ade1633b.js.map",
+    "static/js/5.1db48ec2.chunk.js": "/web-replica/static/js/5.1db48ec2.chunk.js",
+    "static/js/5.1db48ec2.chunk.js.map": "/web-replica/static/js/5.1db48ec2.chunk.js.map",
+    "static/js/6.73d11b33.chunk.js": "/web-replica/static/js/6.73d11b33.chunk.js",
+    "static/js/6.73d11b33.chunk.js.map": "/web-replica/static/js/6.73d11b33.chunk.js.map",
+    "static/js/7.60c44347.chunk.js": "/web-replica/static/js/7.60c44347.chunk.js",
+    "static/js/7.60c44347.chunk.js.map": "/web-replica/static/js/7.60c44347.chunk.js.map",
+    "static/js/8.501ed5a5.chunk.js": "/web-replica/static/js/8.501ed5a5.chunk.js",
+    "static/js/8.501ed5a5.chunk.js.map": "/web-replica/static/js/8.501ed5a5.chunk.js.map",
+    "static/js/9.b578c5b0.chunk.js": "/web-replica/static/js/9.b578c5b0.chunk.js",
+    "static/js/9.b578c5b0.chunk.js.map": "/web-replica/static/js/9.b578c5b0.chunk.js.map",
+    "static/js/10.9fabecde.chunk.js": "/web-replica/static/js/10.9fabecde.chunk.js",
+    "static/js/10.9fabecde.chunk.js.map": "/web-replica/static/js/10.9fabecde.chunk.js.map",
+    "static/js/11.e18c7185.chunk.js": "/web-replica/static/js/11.e18c7185.chunk.js",
+    "static/js/11.e18c7185.chunk.js.map": "/web-replica/static/js/11.e18c7185.chunk.js.map",
+    "index.html": "/web-replica/index.html",
+    "static/css/main.b6e2c020.chunk.css.map": "/web-replica/static/css/main.b6e2c020.chunk.css.map",
+    "static/js/1.d0caa015.chunk.js.LICENSE.txt": "/web-replica/static/js/1.d0caa015.chunk.js.LICENSE.txt",
+    "static/js/5.1db48ec2.chunk.js.LICENSE.txt": "/web-replica/static/js/5.1db48ec2.chunk.js.LICENSE.txt",
+    "static/media/Karifgram.png": "/web-replica/static/media/Karifgram.33790cf2.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ade1633b.js",
+    "static/js/5.1db48ec2.chunk.js",
+    "static/css/main.b6e2c020.chunk.css",
+    "static/js/main.2dee1093.chunk.js"
+  ]
+}
