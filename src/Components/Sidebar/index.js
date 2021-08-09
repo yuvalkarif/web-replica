@@ -5,12 +5,12 @@ import Suggestions from "../Suggestions";
 import { Wrapper } from "./Sidebar.styles";
 const Sidebar = () => {
   const {
-    user: { fullName, username, userId, following, docId },
+    user: { fullName, username, userId, following, docId, profilePic },
   } = useUser();
 
   return (
     <Wrapper>
-      <User username={username} fullName={fullName} />
+      <User username={username} fullName={fullName} profilePic={profilePic} />
       <Suggestions
         userId={userId}
         following={following}

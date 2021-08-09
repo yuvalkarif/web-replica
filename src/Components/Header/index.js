@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Search,
   Wrapper,
@@ -13,7 +13,6 @@ import FirebaseContext from "../../Context/firebase";
 import UserContext from "../../Context/user";
 import * as ROUTES from "../../constants/routes";
 import { getUserByUserId } from "../../services/firebase";
-import { useEffect } from "react/cjs/react.development";
 import Skeleton from "react-loading-skeleton";
 export const Header = () => {
   const { firebase } = useContext(FirebaseContext);
