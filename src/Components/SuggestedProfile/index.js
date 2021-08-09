@@ -29,7 +29,6 @@ const User = ({
     setFollowed(true);
     await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
     await updateFollowedUserFollowers(profileDocId, userId, false);
-    console.log(`handledfollowers`);
   }
 
   return !followed ? (

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 //Components
 import ProfileHeader from "./ProfileHeader";

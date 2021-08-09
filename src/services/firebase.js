@@ -142,3 +142,18 @@ export function getLikedPhoto(photo, userId) {
 
   return newPhoto;
 }
+
+export async function getUserWithDocId(userId) {
+  const result = await firebase
+    .firestore()
+    .collection("users")
+    .where("userId", "==", userId)
+    .get();
+
+  const [user] = result.docs.map((user) => ({
+    ...user.data(),
+    docId: user.id,
+  }));
+
+  return user;
+}

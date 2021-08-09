@@ -1,14 +1,56 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
+import UserContext from "../../../Context/user";
+import {
+  updateLoggedInUserFollowing,
+  updateFollowedUserFollowers,
+  getUserByUserId,
+} from "../../../services/firebase";
 import {
   Wrapper,
   Info,
   Title,
   Details,
   Description,
+  Button,
 } from "./ProfileHeader.styles";
 import PropTypes from "prop-types";
+import { getUserWithDocId } from "../../../services/firebase";
+
 const ProfileHeader = ({ user, photos }) => {
+  const [followed, setFollowed] = useState(``);
+  const { user: loggedInUser } = useContext(UserContext);
+  const [updatedUser, setUpdatedUser] = useState(null);
+  const [followerCount, setFollowerCount] = useState(null);
+  const [isSameUser, setIsSameUser] = useState(true);
+
+  async function handleFollowUser() {
+    setFollowed((followed) => !followed);
+
+    await updateLoggedInUserFollowing(updatedUser.docId, user.userId, followed);
+    await updateFollowedUserFollowers(user.docId, loggedInUser.uid, followed);
+    updateFollwers();
+  }
+  async function updateFollwers() {
+    const [result] = await getUserByUserId(user.userId);
+    setFollowerCount(result.followers.length);
+  }
+  useEffect(() => {
+    async function updateUser() {
+      user.userId === loggedInUser.uid
+        ? setIsSameUser(true)
+        : setIsSameUser(false);
+
+      const result = await getUserWithDocId(loggedInUser.uid);
+      setUpdatedUser(result);
+      setFollowerCount(user.followers.length);
+      setFollowed(user.followers.includes(loggedInUser.uid) ? true : false);
+    }
+    if (user && loggedInUser) {
+      updateUser();
+    }
+  }, [loggedInUser, user]);
+
   return (
     <Wrapper id={"Header"}>
       <div>
@@ -24,7 +66,14 @@ const ProfileHeader = ({ user, photos }) => {
         )}
       </div>
       <Info>
-        <Title>{user ? `${user.username}` : <Skeleton />}</Title>
+        <Title>
+          {user ? `${user.username}` : <Skeleton />}{" "}
+          {isSameUser ? null : (
+            <Button onClick={handleFollowUser}>
+              {followed ? "Unfollow" : "Follow"}
+            </Button>
+          )}
+        </Title>
         <Details>
           <div>
             <span>{photos ? `${photos.length}` : <Skeleton width={10} />}</span>{" "}
@@ -32,7 +81,7 @@ const ProfileHeader = ({ user, photos }) => {
           </div>
           <div>
             <span>
-              {user ? `${user.followers.length}` : <Skeleton width={10} />}
+              {followerCount ? `${followerCount}` : <Skeleton width={10} />}
             </span>{" "}
             followers
           </div>

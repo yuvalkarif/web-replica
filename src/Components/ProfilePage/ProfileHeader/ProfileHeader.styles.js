@@ -51,3 +51,13 @@ export const Description = styled.div`
     margin: 0;
   }
 `;
+
+export const Button = styled.button`
+  border: none;
+  background: var(--blueColor);
+  border-radius: 3px;
+  padding: 0.2rem 1rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+`;
