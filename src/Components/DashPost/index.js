@@ -14,7 +14,7 @@ const DashPost = ({ content }) => {
   return (
     <PostWrapper>
       <DashPostHeader username={content.username} />
-      <Link to={`web-replica/post/${content.photoId}`}>
+      <Link to={`/web-replica/post/${content.photoId}`}>
         <DashPostImage src={content.imageSrc} caption={content.caption} />
       </Link>
       <DashPostActions

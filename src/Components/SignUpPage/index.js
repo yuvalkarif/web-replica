@@ -51,7 +51,7 @@ const SignUpPage = () => {
             following: ["bmxcUk2TvAYrbmvPisqMr8stjFG2"],
             dateCreated: Date.now(),
           });
-        console.log(firebase);
+
         history.push(ROUTES.DASHBOARD);
       } catch (error) {
         setFullName("");
