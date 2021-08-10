@@ -38,7 +38,7 @@ const User = ({
       ) : (
         <>
           <MiniProfile>
-            <Link to={`/p/${username}`}>
+            <Link to={`/web-replica/p/${username}`}>
               {profilePic && username ? (
                 <div>
                   <MiniPic className="img" src={profilePic} />

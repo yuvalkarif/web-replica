@@ -12,7 +12,7 @@ const User = ({ username, fullName, profilePic }) => {
       {!username || !fullName ? (
         <Skeleton count={1} height={61}></Skeleton>
       ) : (
-        <Link to={`/p/${username}`}>
+        <Link to={`/web-replica/p/${username}`}>
           <MiniProfile>
             <MiniPic src={profilePic} />
             <div>

@@ -52,7 +52,7 @@ function App() {
               <Post />
             </ProtectedRoute>
 
-            <Route component={NotFound} />
+            <IsUserLoggedIn></IsUserLoggedIn>
           </Switch>
         </Suspense>
       </Router>

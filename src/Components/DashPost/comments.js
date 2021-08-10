@@ -25,7 +25,7 @@ export default function DashPostComments({
         )}
         {comments.slice(0, 3).map((item) => (
           <CommentsName key={`${item.comment}-${item.displayName}`}>
-            <Link to={`/p/${item.displayName}`}>
+            <Link to={`/web-replica/p/${item.displayName}`}>
               <span>{item.displayName}</span>
             </Link>
             <CommentsText>{item.comment}</CommentsText>

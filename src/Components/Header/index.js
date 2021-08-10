@@ -60,7 +60,7 @@ export const Header = () => {
                 Sign Out
               </Button>
             </Link>
-            <Link to={`/p/${user.displayName}`}>
+            <Link to={`/web-replica/p/${user.displayName}`}>
               {profilePic ? (
                 <MiniPic src={profilePic}></MiniPic>
               ) : (
