@@ -5,5 +5,5 @@
     <img width="33%" src="https://yuvalkarif.github.io/web-replica/static/media/Karifgram.33790cf2.png"  > 
   </a>
    <br/>
-  Live site : https://yuvalkarif.github.io/web-replica/#/
+  Live site : https://yuvalkarif.github.io/web-replica
 </p>
