@@ -1,34 +1,44 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-left: 2rem;
+  width: 100%;
   border-bottom: 1.5px solid var(--lightColor);
-  padding: 3rem 4rem;
-  img {
-    width: 148px;
-    height: 148px;
-    border-radius: 100%;
-    aspect-ratio: 1/1;
+  padding-block: 2rem;
+  margin: 0 auto;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    img {
+      max-width: 148px;
+      width: 100%;
+      border-radius: 100%;
+      aspect-ratio: 1/1;
+    }
   }
 `;
 export const Info = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 0px;
-
-  margin-left: 2rem;
+  padding-left: 2rem;
 `;
 
 export const Details = styled.div`
   display: flex;
   font-weight: 300;
+  & > * {
+    padding: 0.5rem 0;
+  }
   div {
+    display: flex;
+    flex-direction: column;
     margin-right: 1rem;
 
     span {
       font-weight: 400;
+      text-align: center;
     }
   }
 `;

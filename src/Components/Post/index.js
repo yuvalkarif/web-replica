@@ -65,10 +65,10 @@ const Post = () => {
         ) : (
           <Skeleton width={600} height={600} />
         )}
-        <Content>
+        <Content className="content">
           <PostHeader>
             {creator ? (
-              <Link to={`/web-replica/p/${creator.username}`}>
+              <Link to={`/p/${creator.username}`}>
                 <MiniPic src={creator.profilePic} alt="" />
               </Link>
             ) : (
@@ -91,7 +91,7 @@ const Post = () => {
                 postComments.map((comment, i) => {
                   return (
                     <CommentsWrapper key={i}>
-                      <Link to={`/web-replica/p/${comment.displayName}`}>
+                      <Link to={`/p/${comment.displayName}`}>
                         {commentPhotos ? (
                           <MiniPic src={commentPhotos[i]} alt=""></MiniPic>
                         ) : (

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { lazy } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 //Root CSS
 import "./App.css";
@@ -8,7 +8,6 @@ import "./App.css";
 import * as ROUTES from "./constants/routes";
 import useAuthListener from "./hooks/use-auth-listener";
 import UserContext from "./Context/user";
-
 import ProtectedRoute from "./helpers/protected.routes";
 import IsUserLoggedIn from "./helpers/is-user-logged-in";
 //Components
@@ -24,7 +23,7 @@ function App() {
   return (
     <UserContext.Provider value={{ user }}>
       <Router>
-        <Suspense fallback={<p>Loading</p>}>
+        <Suspense fallback={<p></p>}>
           <Switch>
             <IsUserLoggedIn
               user={user}

@@ -3,28 +3,33 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   margin: 0 auto;
-  width: 1080px;
+  max-width: 1080px;
+  width: 90%;
   border: 1.5px solid var(--lightColor);
   background-color: white;
   margin-top: 2rem;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const Content = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 60% 1fr 1fr;
-  gap: 0px 0px;
+  display: flex;
+  flex-direction: column;
 `;
 export const Block = styled.div`
   display: flex;
-  text-align: center;
-  padding: 1rem;
+  justify-content: center;
+  align-content: center;
+  padding: 0 1rem;
   flex-direction: column;
+  margin: 1rem 0;
 `;
 export const Header = styled.div`
   display: flex;
   align-items: center;
+
   padding: 1rem;
   border-bottom: 1.5px solid var(--lightColor);
   h1 {
@@ -35,8 +40,8 @@ export const Header = styled.div`
 `;
 
 export const MiniPic = styled.img`
-  width: 44px;
-  height: 44px;
+  max-width: 44px;
+  max-height: 44px;
 
   overflow: hidden;
   border-radius: 100%;
@@ -44,9 +49,10 @@ export const MiniPic = styled.img`
 
 export const Description = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+
   border-bottom: 1.5px solid var(--lightColor);
-  text-align: center;
+
   h1 {
     margin-top: 0.75rem;
     margin-left: 1rem;
@@ -55,7 +61,6 @@ export const Description = styled.div`
     margin-right: 0.8rem;
   }
   div {
-    margin-top: 0.75rem;
     font-size: 0.85rem;
     font-weight: 400;
   }
@@ -79,8 +84,6 @@ export const DateWrapper = styled.div`
   color: var(--mediumColor);
   margin-left: 0.75rem;
   font-size: 0.85rem;
-  display: flex;
-  align-items: center;
 `;
 export const Comment = styled.div`
   padding: 1rem;
@@ -90,7 +93,8 @@ export const Comment = styled.div`
 export const CommentsWrapper = styled.div`
   display: flex;
   flex-direction: row;
-
+  align-content: center;
+  margin: 0.5em 0;
   a {
     text-decoration: none;
     display: flex;
@@ -98,6 +102,7 @@ export const CommentsWrapper = styled.div`
   }
   div {
     color: var(--darkColor);
+    padding-top: 1em;
   }
 `;
 export const SkeletonWrapper = styled.div`

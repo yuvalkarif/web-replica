@@ -16,7 +16,7 @@ const Content = ({ photos }) => {
             photos.map((photo) => {
               return (
                 <Post key={`${photo.photoId}`}>
-                  <Link to={`/web-replica/post/${photo.photoId}`}>
+                  <Link to={`/post/${photo.photoId}`}>
                     <img src={photo.imageSrc} alt={photo.photoId}></img>
                   </Link>
                 </Post>

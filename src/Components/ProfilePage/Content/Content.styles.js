@@ -17,6 +17,7 @@ export const Menu = styled.div`
 
 export const Posts = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0;
@@ -27,7 +28,7 @@ export const Post = styled.div`
   padding-bottom: 0.5rem;
   justify-content: center;
   padding: 1rem 0rem;
-  margin-inline: 1rem;
+  margin-inline: 1em;
   flex: 0 0 33.333333%;
   position: relative;
   /* ::before {

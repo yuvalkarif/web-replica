@@ -1,17 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
   background-color: white;
-  margin: 0;
-  display: grid;
-  height: 3rem;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  border-bottom: 1.5px solid var(--lightColor);
-
+  display: flex;
+  justify-content: space-between;
+  min-height: 3rem;
   align-items: center;
   a {
     display: flex;
@@ -23,19 +16,6 @@ export const MiniLogo = styled.img`
   margin-top: 0.5rem;
 `;
 
-export const Search = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
-  input {
-    text-align: center;
-    color: var(--mediumColor);
-    background-color: var(--bgColor);
-    border: 1.5px solid var(--lightColor);
-    border-radius: 5px;
-  }
-`;
 export const MiniPic = styled.img`
   height: 2.25rem;
   border-radius: 100%;

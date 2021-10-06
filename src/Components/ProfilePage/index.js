@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 //Components
 import ProfileHeader from "./ProfileHeader";
 import Content from "./Content";
@@ -20,11 +20,17 @@ const ProfilePage = () => {
   });
   return (
     <>
-      <Header />
-      <Wrapper id={"Profile"}>
-        <ProfileHeader user={user} photos={photos} />
-        <Content photos={photos} />
-      </Wrapper>
+      {user !== null ? (
+        <>
+          <Header />
+          <Wrapper id={"Profile"}>
+            <ProfileHeader user={user} photos={photos} />
+            <Content photos={photos} />
+          </Wrapper>
+        </>
+      ) : (
+        <Redirect to="/" />
+      )}
     </>
   );
 };

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
-  width: 600px;
-
   a {
     text-decoration: none;
     color: black;
@@ -15,10 +13,12 @@ export const HeaderWrapper = styled.div`
 `;
 export const MiniPic = styled.img`
   width: 25px;
+
   border-radius: 100%;
 `;
 export const PostPic = styled.img`
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
 `;
 export const HeaderTitle = styled.div`
   margin-block: auto;
@@ -36,7 +36,7 @@ export const ActionWrapper = styled.div`
 `;
 
 export const Heart = styled.svg`
-  width: 2rem;
+  max-width: 2rem;
   user-select: none;
   cursor: pointer;
   fill: ${(props) => (props.toggleLiked ? "red" : "none")};
@@ -44,7 +44,7 @@ export const Heart = styled.svg`
   margin-right: 0.5rem;
 `;
 export const Comment = styled.svg`
-  width: 2rem;
+  max-width: 2rem;
   user-select: none;
   cursor: pointer;
   stroke: var(--darkColor);

@@ -1,12 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import {
-  Search,
-  Wrapper,
-  Navbar,
-  MiniPic,
-  MiniLogo,
-  Button,
-} from "./Header.styles";
+import { Wrapper, Navbar, MiniPic, MiniLogo, Button } from "./Header.styles";
 import Logo from "./photos/Karifgram.png";
 import { Link } from "react-router-dom";
 import FirebaseContext from "../../Context/firebase";
@@ -18,7 +11,6 @@ export const Header = () => {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
   const [profilePic, setProfilePic] = useState();
-  const [search, setSearch] = useState(``);
 
   useEffect(() => {
     async function getUserPic() {
@@ -36,13 +28,7 @@ export const Header = () => {
       <Link to={ROUTES.DASHBOARD}>
         <MiniLogo src={Logo} alt="" />
       </Link>
-      <Search>
-        <input
-          placeholder="Search"
-          value={search}
-          onChange={({ target }) => setSearch(target.value)}
-        ></input>
-      </Search>
+
       <Navbar>
         {user ? (
           <>
@@ -60,7 +46,7 @@ export const Header = () => {
                 Sign Out
               </Button>
             </Link>
-            <Link to={`/web-replica/p/${user.displayName}`}>
+            <Link to={`/p/${user.displayName}`}>
               {profilePic ? (
                 <MiniPic src={profilePic}></MiniPic>
               ) : (

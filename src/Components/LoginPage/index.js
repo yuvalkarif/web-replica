@@ -1,32 +1,33 @@
-import React from "react";
 import {
   Bottom,
   ErrorMessage,
   LoginForm,
   SubmitButton,
   Wrapper,
+  OutlineButton,
 } from "./LoginPage.styles";
 import Logo from "./../Header/photos/Karifgram.png";
 import { LogoImg } from "./LoginPage.styles";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { useContext } from "react";
-import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import FirebaseContext from "../../Context/firebase";
 import * as ROUTES from "../../constants/routes";
 const LoginPage = () => {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
-
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState(``);
-
   const isInvalid = password === "" || emailAddress === "";
-
+  const handleDemo = () => {
+    setEmailAddress("karifgram@gmail.com");
+    setPassword("karifgram");
+  };
   const handleLogin = async (event) => {
     event.preventDefault();
+    loggingIn();
+  };
+  const loggingIn = async () => {
     try {
       await firebase
         .auth()
@@ -36,7 +37,6 @@ const LoginPage = () => {
       setEmailAddress("");
       setPassword("");
       setError(error.message);
-      console.log(error);
     }
   };
 
@@ -66,6 +66,9 @@ const LoginPage = () => {
           <SubmitButton disabled={isInvalid} type="submit">
             Log In
           </SubmitButton>
+          <OutlineButton type="button" onClick={handleDemo}>
+            Demo
+          </OutlineButton>
         </LoginForm>
       </Wrapper>
 

@@ -54,6 +54,20 @@ export const SubmitButton = styled.button`
   cursor: ${(props) => (props.disabled ? "normal" : "pointer")};
   margin-top: 0.35rem;
 `;
+export const OutlineButton = styled.button`
+  background-color: var(--bgColor);
+  color: var(--blueColor);
+  border: 2px solid var(--blueColor);
+  border-radius: 4px;
+  padding: 0.35rem 0;
+  font-family: inherit;
+  font-weight: 700;
+  width: 106.5%;
+  font-size: 0.9rem;
+  opacity: ${(props) => (props.disabled ? "50%" : "100%")};
+  cursor: ${(props) => (props.disabled ? "normal" : "pointer")};
+  margin-top: 0.35rem;
+`;
 
 export const Bottom = styled.div`
   font-size: 0.9rem;

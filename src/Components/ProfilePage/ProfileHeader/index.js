@@ -43,8 +43,12 @@ const ProfileHeader = ({ user, photos }) => {
 
       const result = await getUserWithDocId(loggedInUser.uid);
       setUpdatedUser(result);
-      setFollowerCount(user.followers.length);
-      setFollowed(user.followers.includes(loggedInUser.uid) ? true : false);
+      if (user.followers) {
+        setFollowerCount(user.followers.length);
+        setFollowed(user.followers.includes(loggedInUser.uid) ? true : false);
+      } else {
+        setFollowerCount(0);
+      }
     }
     if (user && loggedInUser) {
       updateUser();

@@ -15,7 +15,7 @@ export default function DashPostHeader({ username }) {
   }, [username]);
   return (
     <HeaderWrapper>
-      <Link to={`/web-replica/p/${username}`}>
+      <Link to={`/p/${username}`}>
         {profile ? (
           <MiniPic src={profile} />
         ) : (
