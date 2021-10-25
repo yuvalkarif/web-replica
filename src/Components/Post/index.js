@@ -53,7 +53,10 @@ const Post = () => {
       setCommentPhotos(commentPhotosArray);
       setPhoto(getLikedPhoto(photoResult, user.uid));
     }
-    if (photoId) getPhotoPost();
+    if (photoId) {
+      getPhotoPost();
+    }
+    console.log(photoId);
   }, [photoId, user.uid]);
 
   return (
@@ -123,9 +126,7 @@ const Post = () => {
             <DateWrapper>
               {formatDistance(photo.dateCreated, new Date()).toUpperCase()} AGO
             </DateWrapper>
-          ) : (
-            <Skeleton />
-          )}
+          ) : null}
           {photo ? (
             <AddComment
               docId={photo.docId}

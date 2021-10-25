@@ -92,15 +92,15 @@ export function updateDatabasePhoto(firebase) {
     .firestore()
     .collection("photos")
     .add({
-      photoId: "4",
-      userId: "3",
-      imageSrc: `https://i.imgur.com/dQRMCg1.png`,
-      caption: "ad matai JS aug21",
+      photoId: "6",
+      userId: "5",
+      imageSrc: `https://fmed.ktu.edu/wp-content/uploads/sites/198/2020/07/clay-banks-s-hw64ghWEA-unsplash-600x600-1.jpg`,
+      caption: "sweet ones",
       likes: [],
       comments: [
         {
-          displayName: "tamar_kahanov",
-          comment: "shaboor",
+          displayName: "yuval_karif",
+          comment: "very nice",
         },
       ],
       userLatitude: "40.7128°",

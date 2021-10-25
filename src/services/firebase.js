@@ -128,7 +128,9 @@ export async function getPhotoByPhotoId(photoId) {
 
 export async function getProfilePictureByName(displayName) {
   const [result] = await getUserByUsername(displayName);
-  return result.profilePic;
+  console.log("result", result);
+
+  return result?.profilePic;
 }
 
 export function getLikedPhoto(photo, userId) {

@@ -84,9 +84,7 @@ const ProfileHeader = ({ user, photos }) => {
             posts
           </div>
           <div>
-            <span>
-              {followerCount ? `${followerCount}` : <Skeleton width={10} />}
-            </span>{" "}
+            <span>{user ? `${followerCount}` : <Skeleton width={10} />}</span>{" "}
             followers
           </div>
           <div>
@@ -97,13 +95,15 @@ const ProfileHeader = ({ user, photos }) => {
           </div>
         </Details>
         <Description>
-          {user?.description ? (
-            user.description.map((text, i) => {
-              return i === 0 ? <h1 key={i}>{text}</h1> : <p key={i}>{text}</p>;
-            })
-          ) : (
-            <Skeleton width={250} height={50} />
-          )}
+          {user?.description
+            ? user.description.map((text, i) => {
+                return i === 0 ? (
+                  <h1 key={i}>{text}</h1>
+                ) : (
+                  <p key={i}>{text}</p>
+                );
+              })
+            : null}
         </Description>
       </Info>
     </Wrapper>
